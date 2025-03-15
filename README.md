@@ -1,1 +1,1 @@
-# -Open-space-detection
+# Open-space-detection
