@@ -65,16 +65,15 @@
 
 ### 学習設定
 
-```text
-Framework: segmentation_models.pytorch
-Model   : UNet (ResNet50 encoder, ImageNet pretrained)
-Epochs   : 25
-BatchSize: 16
-LR       : 1e-4
-Loss     : (3×Dice + 1×BCE)/4
-InputRes : 512 × 512（縦横比保持）
-Augment  : HorizontalFlip / VerticalFlip / RandomRotate90 / 改良 CoarseDropout
-```
+- **Framework**: segmentation_models.pytorch
+- **Model**: UNet (ResNet50 encoder, ImageNet pretrained)
+- **Epochs**: 25 (`batch_size=16`)
+- **LR**: 1e-4
+- **Augmentation**:
+  - `CachedMosaic`, `RandomResize`, `RandomCrop`
+  - Albumentations: `HorizontalFlip`, `VerticalFlip`, ` RandomRotate90`, `改良 CoarseDropout（元画像の短辺が20ピクセル以下の時は適用しない）`
+  - `RandomFlip`
+
 
 ### 推論
 
