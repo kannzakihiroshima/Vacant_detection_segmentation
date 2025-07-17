@@ -4,7 +4,7 @@
 再アノテーション期間は空き地ハンター化し，運転中に空地を見つけるだけでテンション上がりました😎
 
 私は現在大学で **土木都市計画学** を専攻してることもあり，空き地検出は，都市再編（コンパクトシティなど）や防災計画（物資集積所や避難所など）の観点で意義深いテーマだと感じました．
-このコンペで培った知見と生成した空き地データが、将来の都市再編・防災施策の一助となることを強く願っています。  
+このコンペが、将来の都市計画の一助となることを強く願っています。  
 最後に、チャレンジの場を提供してくださった **Solafune 運営のみなさま** に心より感謝いたします！
 
 ## 検出タスク（Object Detection）
@@ -23,7 +23,6 @@
 ### 学習設定
 
 - **Base Model**: COCO 事前学習済み `rtmdet_tiny` で 5‑fold 学習。
-
 
 
 ### 学習設定
@@ -67,12 +66,12 @@
 ### 学習設定
 
 ```text
+Framework: segmentation_models.pytorch
 Model   : UNet (ResNet50 encoder, ImageNet pretrained)
-Library  : segmentation_models.pytorch
 Epochs   : 25
 BatchSize: 16
 LR       : 1e-4
-Loss     : 3×Dice + 1×BCE
+Loss     : (3×Dice + 1×BCE)/4
 InputRes : 512 × 512（縦横比保持）
 Augment  : HorizontalFlip / VerticalFlip / RandomRotate90 / 改良 CoarseDropout
 ```
